@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Final" id="Project-24a9" database="MySql" >
+	<comment><![CDATA[My Project]]></comment>
+	<schema name="final" >
+		<table name="admin" spec="" >
+			<comment><![CDATA[Admin]]></comment>
+			<column name="name" type="VARCHAR" length="100" jt="12" >
+				<comment><![CDATA[admin name]]></comment>
+			</column>
+			<column name="admin id" type="INT" jt="4" mandatory="y" />
+			<column name="address" type="VARCHAR" length="100" jt="12" />
+			<column name="mobilenumber" type="INT" jt="4" />
+			<index name="pk_admin" unique="PRIMARY_KEY" >
+				<column name="admin id" />
+			</index>
+			<fk name="fk_admin_emp" to_schema="final" to_table="emp" >
+				<fk_column name="admin id" pk="empid" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="customer" prior="tbl" >
+			<column name="name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="address" type="VARCHAR" length="100" jt="12" />
+			<column name="mobile" type="INT" jt="4" mandatory="y" />
+			<column name="email" type="INT" jt="4" />
+			<index name="pk_customer" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="deliveryboy" prior="tbl" >
+			<column name="name" type="VARCHAR" length="100" jt="12" />
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="salary" type="INT" jt="4" mandatory="y" />
+			<column name="mgrid" type="INT" jt="4" />
+			<column name="address" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_deliveryboy" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_deliveryboy_emp" to_schema="final" to_table="emp" >
+				<fk_column name="id" pk="empid" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="emp" prior="tbl" >
+			<column name="ename" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="empid" type="INT" jt="4" mandatory="y" />
+			<column name="salary" type="INT" jt="4" />
+			<column name="dept" type="INT" jt="4" />
+			<index name="pk_emp" unique="PRIMARY_KEY" >
+				<column name="empid" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<layout name="Layout" id="Layout-246d" show_relation="columns" >
+		<entity schema="final" name="admin" color="3986C1" x="48" y="272" />
+		<entity schema="final" name="customer" color="C1D8EE" x="336" y="256" />
+		<entity schema="final" name="deliveryboy" color="C1D8EE" x="336" y="48" />
+		<entity schema="final" name="emp" color="C1D8EE" x="48" y="64" />
+	</layout>
+</project>
