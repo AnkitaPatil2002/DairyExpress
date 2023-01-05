@@ -7,6 +7,7 @@
 - Visual studio code
 - Visual Studio
 - Db Schema
+- StarUML
 
 # Tech
 - React
