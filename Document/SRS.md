@@ -18,13 +18,15 @@ DairyExpress Platform can be the greatest blessing for the customer’s everyday
 - Delivery person will able to login to portal and deliver the order which is assign by employee.
 
 ## Defination:
-QA:  Quality Assurance
-Portal: Peronalized Online Web Application
-MIS: Management Information System
-CRM: Customer Relation Managment
-BI:  Business Intelligence
-KPI:Key Perfomornace I
-Dashboard: Personalized information presented using  BI techniques such grid, score card, graph, KPI
+<ul>
+  <li>QA:  Quality Assurance</li>
+  <li>Portal: Peronalized Online Web Application</li>
+  <li>MIS: Management Information System</li>
+  <li>CRM: Customer Relation Managment</li>
+  <li>BI:  Business Intelligence</li>
+  <li>KPI:Key Perfomornace Indicator</li>
+  <li>Dashboard: Personalized information presented using  BI techniques such grid, score card, graph, KPI</li>
+ </ul>
 
 ## Functional Requirements
 Any annonymous User will be able to view different products avaialble for sale. Any User will be able select product to view from categories avaialble.Employee will be to track and maintain stock of products available for sale. Employee will be able to raise reqests for product updatation to Admin.
