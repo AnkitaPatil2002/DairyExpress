@@ -42,13 +42,13 @@ The system will backup business data on regular basis and recover in short time 
 uptime: 24* 7 available 99.999%
 
 ### Maintainability:
-A Commercial database software will be used to maintain System data Persistence. A readymade Web Server will be installed to host online shopping portal (Web Site) to management server capabilities. IT operations team will easily monitor and configure System using Adminstrative tools provided by Servers. Separate enviornment will be maintained for system for isolation in production, testing, and development.
+A Commercial database software will be used to maintain System data Persistence. A readymade Web Server will be installed to host online DairyExpress portal (Web Site) to management server capabilities. IT operations team will easily monitor and configure System using Adminstrative tools provided by Servers. Separate enviornment will be maintained for system for isolation in production, testing, and development.
 
 ### Portablility:
-PDA: Portable Device Application System will provide portable User Interface ( HTML, CSS, JS) through users will be able to access online shopping portal. System can be deployed to single server, multi server, to any OS, Cloud (Azure or AWS or GCP)
+PDA: Portable Device Application System will provide portable User Interface ( HTML, CSS, JS) through users will be able to access online DairyExpress portal. System can be deployed to single server, multi server, to any OS, Cloud (Azure or AWS or GCP)
 
 ### Accessibility:
-only registered customer will be able to place an order after authentication. Sales team can reject or approve orders, shopper requests based on role provided. BOD team will be able to view daily, weekly, monthly, annual businss Growth throgh customized dashboard. Shoppers will be able to see their product sale graph
+only registered customer will be able to place an order after authentication. BOD team will be able to view daily, weekly, monthly, annual businss Growth throgh customized dashboard.
 
 ### Durability:
 System will retain customer shopping cart for 15 minutes even though customer loose internet connection and join again. System will maintain wishlist for customer . customer will be able to add products from wishlist and add to shopping cart whenever needed. System will implement backup and recovery for retaining stake holders data, bussiness operation data and business data over time.
@@ -63,7 +63,7 @@ System will designed and developed using reusable, independent or dependent busi
 System will be able to provide consistent user exeprience to stake holder as well as vistors irrespective of load.
 
 ### Safety:
-online shopping portal will be secure from malicious attack, fishing. online shoppping portal functionalilites are protected from outside with prper firewall configuration. online shopping portal will be always kept updated with latest anit virus software. Bussiness data will be backed up periodically to ensure safty of data using increamental back up strategy. Role based security will be applied for Application data and operations accessibility.
+online DairyExpress portal will be secure from malicious attack, fishing. online DairyExpress portal functionalilites are protected from outside with prper firewall configuration. online DairyExpress portal will be always kept updated with latest anit virus software. Bussiness data will be backed up periodically to ensure safty of data using increamental back up strategy. Role based security will be applied for Application data and operations accessibility.
 
 
 
