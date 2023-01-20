@@ -2,11 +2,11 @@
 - Register and manage profile
 - Add/manage multiple addresses
 - Browse and sort through milk products
-- lace an order
-- rack order in real-time
-- ive ratings and reviews
-- et order invoice via SMS and mail
-- efer a friend
+- place an order
+- Track order in real-time
+- Live ratings and reviews
+- Get order invoice via SMS and mail
+- Refer a friend
 - View discounts and offers
 - Earn reward points
 - View order history
