@@ -1,13 +1,13 @@
-package com.example.demo;
+package com.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DairyExpressApplication {
+public class DairyExpress {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DairyExpressApplication.class, args);
+		SpringApplication.run(DairyExpress.class, args);
 	}
 
 }
