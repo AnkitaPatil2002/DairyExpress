@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cglib.core.internal.Function;
-import org.springframework.security.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -23,8 +23,8 @@ public class JwtUtil implements Serializable {
 	private String secret;
 
 	// retrieve username form jwt
-	public Integer extractIdFromToken(String token) {
-		return Integer.parseInt(getClaimFromToken(token, Claims::getSubject));
+	public Long extractIdFromToken(String token) {
+		return Long.parseLong(getClaimFromToken(token, Claims::getSubject));
 	}
 
 	// retrieve expiration date from jwt token
@@ -68,7 +68,7 @@ public class JwtUtil implements Serializable {
 
 	// validate token
 	public Boolean validateToken(String token, UserDetails userDetails) {
-		final Integer id = extractIdFromToken(token);
+		final Long id = extractIdFromToken(token);
 		return (id.toString().equals(userDetails.getUsername()) && !isTokenExpired(token));
 	}
 }
