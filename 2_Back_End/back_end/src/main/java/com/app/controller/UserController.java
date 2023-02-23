@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.Authentication;
-import org.springframework.security.AuthenticationManager;
-import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +28,10 @@ import com.app.util.JwtUtil;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin
+//@CrossOrigin
 public class UserController {
 	@Autowired
 	private UserService userService;
-
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	@Autowired
@@ -40,6 +39,11 @@ public class UserController {
 
 	public UserController() {
 		System.out.println("-----ctor " + getClass().getName() + "----------");
+	}
+
+	@GetMapping("/admin")
+	public User getAdmin() {
+		return new User();
 	}
 
 	@PostMapping("/register")

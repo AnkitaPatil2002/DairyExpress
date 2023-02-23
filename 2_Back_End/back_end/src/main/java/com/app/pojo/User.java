@@ -24,6 +24,7 @@ public class User extends BaseEntity {
 	private Role role;
 
 	public User() {
+		this.firstName = "mahi";
 	}
 
 	public User(String firstName, String lastName, String email, String password, String phone, Role role) {
