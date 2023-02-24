@@ -35,7 +35,7 @@ class UserTest {
 	@Test
 	void userTest() {
 		List<User> list = List.of(
-				new User("Mahendra", "Kolhe", "mkolhe23@gmail.com", encoder.encode("Mahikolhe"), "7350458073",
+				new User("Mahendra", "Kolhe", "mkolhe23@gmail.com", encoder.encode("Mahikolhe23"), "7350458073",
 						Role.ADMIN),
 				new User("Sujay", "Mathane", "sujaymathane96@gmail.com", encoder.encode("Sujay123"), "8237510542",
 						Role.ADMIN));
