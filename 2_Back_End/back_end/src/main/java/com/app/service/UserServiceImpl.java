@@ -48,11 +48,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String deleteUserById(Long Id) {
-		String msg = "Invalid ID";
 		userRepo.deleteById(Id);
 		if (userRepo.findById(Id) == null) {
 			return "User Deleted Success fully";
 		}
-		return msg;
+		return "";
 	}
 }

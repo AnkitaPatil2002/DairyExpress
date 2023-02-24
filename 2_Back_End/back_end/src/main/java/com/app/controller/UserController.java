@@ -79,6 +79,7 @@ public class UserController {
 	@PutMapping("/edit/{uid}")
 	public ResponseEntity<?> editUser(@RequestBody User user, @PathVariable long uid) {
 		user.setId(uid);
+		user.setPassword(encoder.encode(user.getPassword()));
 		return new ResponseEntity<>(new ResponseDto<User>("success", userService.registerOrEditUser(user)),
 				HttpStatus.OK);
 	}
