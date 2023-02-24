@@ -28,7 +28,7 @@ import com.app.util.JwtUtil;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 	@Autowired
 	private PasswordEncoder encoder;

@@ -31,7 +31,10 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
-		}).and().authorizeRequests().antMatchers("/user/**").permitAll().antMatchers("/products/purchase")
+		}).and().authorizeRequests()
+				.antMatchers("/user/**").permitAll()
+				.antMatchers("/address/**").permitAll()
+				.antMatchers("/products/purchase")
 				.hasRole("CUSTOMER").antMatchers("/products/view", "/auth/**", "/swagger*/**", "/v*/api-docs/**")
 				.permitAll().antMatchers(HttpMethod.OPTIONS).permitAll().anyRequest().authenticated().and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
