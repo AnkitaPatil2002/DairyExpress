@@ -1,74 +1,69 @@
 package com.app.util;
 
-import java.io.Serializable;
-import java.sql.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
+import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.Claims;
+import com.app.service.UserDetailmpl;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
-public class JwtUtil implements Serializable {
-	private static final long serialVersionUID = 5290825829597669571L;
-	private static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+public class JwtUtil {
+	private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
 
-	@Value("${jwt.secret}")
-	private String secret;
+	@Value("${SECRET_KEY}")
+	private String jwtSecret;
 
-	// retrieve username form jwt
-	public Long extractIdFromToken(String token) {
-		return Long.parseLong(getClaimFromToken(token, Claims::getSubject));
+	@Value("${EXP_TIMEOUT}")
+	private int jwtExpirationMs;
+
+	public String generateJwtToken(Authentication authentication) {
+		System.out.println("generate jwt token " + authentication);
+		UserDetailmpl userPrincipal = (UserDetailmpl) authentication.getPrincipal();
+//JWT : userName,issued at ,exp date,digital signature(does not contain password n authorities)
+		return Jwts.builder() // JWTs : a Factory class , used to create JWT tokens
+				.setSubject((userPrincipal.getUsername())) // setting subject of the token(typically user name) :sets
+															// subject claim part of the token
+				.setIssuedAt(new Date())// Sets the JWT Claims iat (issued at) value of current date
+				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))// Sets the JWT Claims exp
+																					// (expiration) value.
+				.signWith(SignatureAlgorithm.HS512, jwtSecret) // Signs the constructed JWT using the specified
+																// algorithm with the specified key, producing a
+																// JWS(Json web signature=signed JWT)
+				// Using token signing algo : HMAC using SHA-512
+				.compact();// Actually builds the JWT and serializes it to a compact, URL-safe string
 	}
 
-	// retrieve expiration date from jwt token
-	public Date getExpirationDateFromToken(String token) {
-		return (Date) getClaimFromToken(token, Claims::getExpiration);
+	public String getUserNameFromJwtToken(String token) {
+		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
 	}
 
-	public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-		final Claims claims = getAllClaimsFromToken(token);
-		return claimsResolver.apply(claims);
-	}
-
-	// for retrieving any information from token we will need the secret key
-	private Claims getAllClaimsFromToken(String token) {
-		return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-	}
-
-	// check if the token has expired
-	private Boolean isTokenExpired(String token) {
-		final Date expiration = getExpirationDateFromToken(token);
-		return expiration.before(new Date((new Date(0)).getTime()));
-	}
-
-	// generate token for user
-	public String generateToken(Long id) {
-		Map<String, Object> claims = new HashMap<>();
-		return doGenerateToken(claims, id.toString());
-	}
-
-	// while creating the token -
-	// 1. Define claims of the token, like Issuer, Expiration, Subject, and the ID
-	// 2. Sign the JWT using the SHA256 algorithm and secret key.
-	// 3. According to JWS Compact
-	// Serialization(https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#section-3.1)
-	// compaction of the JWT to a URL-safe string
-	private String doGenerateToken(Map<String, Object> claims, String subject) {
-		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-				.signWith(SignatureAlgorithm.HS256, secret).compact();
-	}
-
-	// validate token
-	public Boolean validateToken(String token, UserDetails userDetails) {
-		final Long id = extractIdFromToken(token);
-		return (id.toString().equals(userDetails.getUsername()) && !isTokenExpired(token));
+	public boolean validateJwtToken(String authToken) {
+		try {
+			Jwts.parser().// Returns a new JwtParser instance used to parse JWT strings.
+					setSigningKey(jwtSecret).// Sets the signing key used to verify JWT digital signature.
+					parseClaimsJws(authToken);// Parses the signed JWT returns the resulting Jws<Claims> instance
+												// throws exc in case of failures in verification
+			return true;
+		} catch (Exception e) {
+			logger.error("Invalid JWT : " + e.getMessage());
+		}
+		/*
+		 * // catch (SignatureException e) { //
+		 * logger.error("Invalid JWT signature: {}", e.getMessage()); // } catch
+		 * (MalformedJwtException e) { logger.error("Invalid JWT token: {}",
+		 * e.getMessage()); } catch (ExpiredJwtException e) {
+		 * logger.error("JWT token is expired: {}", e.getMessage()); } catch
+		 * (UnsupportedJwtException e) { logger.error("JWT token is unsupported: {}",
+		 * e.getMessage()); } catch (IllegalArgumentException e) {
+		 * logger.error("JWT claims string is empty: {}", e.getMessage()); }
+		 */
+		return false;
 	}
 }
