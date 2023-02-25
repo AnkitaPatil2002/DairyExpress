@@ -11,14 +11,14 @@ import javax.persistence.Table;
 @Table(name = "stock")
 public class Stock extends BaseEntity {
 	private int quantity;
-	
+
 	@Column(length = 10)
 	private String unit;
-	
+
 	@OneToOne
 	@JoinColumn(name = "product_id")
 	@MapsId
-	private Product currentProduct;
+	private Product currentProduct;	
 
 	public Stock() {
 

@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.custom_exp.UserNotFoundException;
-import com.app.dto.ResponseDt;
+import com.app.dto.ResponseDto;
 import com.app.pojo.Address;
-import com.app.service.IAddressService;
+import com.app.service.AddressService;
 import com.app.service.UserService;
 
 @RestController
@@ -28,7 +28,7 @@ import com.app.service.UserService;
 public class AddressController {
 
 	@Autowired
-	private IAddressService addrService;
+	private AddressService addrService;
 
 	@Autowired
 	private UserService userService;
@@ -37,7 +37,7 @@ public class AddressController {
 	public ResponseEntity<?> getAllAddresses() {
 		Long UserID = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
 		return new ResponseEntity<>(
-				new ResponseDt<List<Address>>("success", addrService.GetAllAddressessByUserId(UserID)), HttpStatus.OK);
+				new ResponseDto<List<Address>>("success", addrService.GetAllAddressessByUserId(UserID)), HttpStatus.OK);
 	}
 
 	@PostMapping("/add")
@@ -45,7 +45,7 @@ public class AddressController {
 		Long UserID = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
 		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
 		addr.setSelectedUser(userService.findById(UserID));
-		return new ResponseEntity<>(new ResponseDt<Address>("success", addrService.AddOrEditAddress(addr)),
+		return new ResponseEntity<>(new ResponseDto<Address>("success", addrService.AddOrEditAddress(addr)),
 				HttpStatus.CREATED);
 	}
 
@@ -55,13 +55,13 @@ public class AddressController {
 		Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
 		addr.setSelectedUser(userService.findById(userId));
 		addr.setId(addrId);
-		return new ResponseEntity<>(new ResponseDt<Address>("success", addrService.AddOrEditAddress(addr)),
+		return new ResponseEntity<>(new ResponseDto<Address>("success", addrService.AddOrEditAddress(addr)),
 				HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{addrId}")
 	public ResponseEntity<?> deleteAddressById(@PathVariable Long addrId) {
-		return new ResponseEntity<>(new ResponseDt<String>("success", addrService.DeleteAddressById(addrId)),
+		return new ResponseEntity<>(new ResponseDto<String>("success", addrService.DeleteAddressById(addrId)),
 				HttpStatus.OK);
 	}
 }
