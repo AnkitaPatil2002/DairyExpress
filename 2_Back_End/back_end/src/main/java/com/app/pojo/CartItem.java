@@ -25,10 +25,9 @@ public class CartItem extends BaseEntity {
 	public CartItem() {
 	}
 
-	public CartItem(int quntity, double price) {
+	public CartItem(int quntity) {
 		super();
 		this.quntity = quntity;
-		this.price = price;
 	}
 
 	public int getQuntity() {

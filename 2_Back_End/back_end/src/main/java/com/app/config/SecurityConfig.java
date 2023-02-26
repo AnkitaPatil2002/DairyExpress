@@ -34,6 +34,7 @@ public class SecurityConfig {
 		}).and().authorizeRequests()
 				.antMatchers("/user/**").permitAll()
 				.antMatchers("/address/**").permitAll()
+				.antMatchers("/category/**").permitAll()
 				.antMatchers("/products/purchase")
 				.hasRole("CUSTOMER").antMatchers("/products/view", "/auth/**", "/swagger*/**", "/v*/api-docs/**")
 				.permitAll().antMatchers(HttpMethod.OPTIONS).permitAll().anyRequest().authenticated().and()
