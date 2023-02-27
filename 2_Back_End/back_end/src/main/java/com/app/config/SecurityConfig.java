@@ -25,8 +25,6 @@ public class SecurityConfig {
 	@Autowired
 	private JwtFilter filter;
 
-	// configure BCryptPassword encode bean
-
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
@@ -34,8 +32,10 @@ public class SecurityConfig {
 		}).and().authorizeRequests()
 				.antMatchers("/user/**").permitAll()
 				.antMatchers("/address/**").permitAll()
+				.antMatchers("/cart/**").permitAll()
 				.antMatchers("/category/**").permitAll()
-				.antMatchers("/products/purchase")
+				.antMatchers("/order/**").permitAll()
+				.antMatchers("/product/**")
 				.hasRole("CUSTOMER").antMatchers("/products/view", "/auth/**", "/swagger*/**", "/v*/api-docs/**")
 				.permitAll().antMatchers(HttpMethod.OPTIONS).permitAll().anyRequest().authenticated().and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

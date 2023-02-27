@@ -1,6 +1,9 @@
 package com.app.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,5 +32,18 @@ public class UserDetailSericeImpl implements UserDetailsService {
 //				.orElseThrow(() -> new UsernameNotFoundException("User Name " + userName + " not found!!!"));
 		User user = userRepo.findByEmail(userName);
 		return new UserDetailmpl(user);
+	}
+
+	public UserDetails loadUserById(Long id) throws UsernameNotFoundException {
+
+		System.out.println("\n------------ IN UserDetailsServiceImpl.loadUserById ---------------\n");
+
+		System.out.println("Id: " + id);
+
+		User user = userRepo.findById(id).get();
+
+		System.out.println("User from loadUserById: " + user);
+		return new org.springframework.security.core.userdetails.User(user.getId().toString(), user.getPassword(),
+				new ArrayList<GrantedAuthority>());
 	}
 }

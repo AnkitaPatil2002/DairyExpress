@@ -1,6 +1,5 @@
 package com.app.pojo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -21,7 +20,7 @@ public class Order extends BaseEntity {
 	private double totalPrice;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-	private LocalDate orderDate;
+	private LocalDateTime orderDate;
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 25)
@@ -45,7 +44,7 @@ public class Order extends BaseEntity {
 	public Order() {
 	}
 
-	public Order(double totalPrice, LocalDate orderDate, OrderStatus orderStatus, LocalDateTime statusUdpateTime,
+	public Order(double totalPrice, LocalDateTime orderDate, OrderStatus orderStatus, LocalDateTime statusUdpateTime,
 			Address deliveryAddress, User customer, User employee) {
 		super();
 		this.totalPrice = totalPrice;
@@ -65,11 +64,11 @@ public class Order extends BaseEntity {
 		this.totalPrice = totalPrice;
 	}
 
-	public LocalDate getOrderDate() {
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(LocalDate orderDate) {
+	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
 

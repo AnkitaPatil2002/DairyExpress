@@ -10,6 +10,6 @@ import com.app.pojo.Cart;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
 
-	@Query("Select c from Cart c join fetch c.cartitem where c.currentCustomer.id=:id")
-	List<Cart> findAllItemsByUser(@Param("id") Long id);
+	@Query("Select c from Cart c join fetch c.selectedProduct where c.currentCustomer.id=:id")
+	List<Cart> findAllItemsByUser(@Param("id") Long userId);
 }

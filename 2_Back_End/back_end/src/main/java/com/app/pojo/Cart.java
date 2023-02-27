@@ -1,22 +1,21 @@
 package com.app.pojo;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cart")
 public class Cart extends BaseEntity {
 	private int quantity;
 
-	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<CartItem> cartitem;
+	@ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product selectedProduct;
 
 	@OneToOne
 	@JoinColumn(name = "customer_id")
@@ -25,10 +24,10 @@ public class Cart extends BaseEntity {
 	public Cart() {
 	}
 
-	public Cart(int quantity, List<CartItem> cartitem, User currentCustomer) {
+	public Cart(int quantity, Product selectedProduct, User currentCustomer) {
 		super();
 		this.quantity = quantity;
-		this.cartitem = cartitem;
+		this.selectedProduct = selectedProduct;
 		this.currentCustomer = currentCustomer;
 	}
 
@@ -40,6 +39,7 @@ public class Cart extends BaseEntity {
 		this.quantity = quantity;
 	}
 
+	@JsonIgnore
 	public User getCurrentCustomer() {
 		return currentCustomer;
 	}
@@ -48,12 +48,12 @@ public class Cart extends BaseEntity {
 		this.currentCustomer = currentCustomer;
 	}
 
-	public List<CartItem> getCartitem() {
-		return cartitem;
+	public Product getSelectedProduct() {
+		return selectedProduct;
 	}
 
-	public void setCartitem(List<CartItem> cartitem) {
-		this.cartitem = cartitem;
+	public void setSelectedProduct(Product selectedProduct) {
+		this.selectedProduct = selectedProduct;
 	}
 
 	@Override

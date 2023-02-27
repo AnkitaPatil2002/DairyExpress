@@ -11,11 +11,11 @@ public interface CartService {
 
 	List<Cart> getAllCartContents(Long userID);
 
-	String updateQuantity(Long carId, Integer quantity);
-
 	void deleteFromCart(Long cartId);
 
 	void deleteAllFromCart(Long userID);
 
 	Optional<Cart> findById(Long cartId);
+
+	String updateQuantity(Long cartId, Integer quantity);
 }

@@ -21,7 +21,7 @@ import com.app.service.CategoryService;
 
 @RestController
 @RequestMapping("/category")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;

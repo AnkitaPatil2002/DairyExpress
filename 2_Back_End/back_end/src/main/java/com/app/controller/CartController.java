@@ -21,7 +21,7 @@ import com.app.pojo.Cart;
 import com.app.service.CartService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/cart")
 public class CartController {
 	@Autowired
@@ -58,7 +58,7 @@ public class CartController {
 	// remove from cart
 	@DeleteMapping("/delete/{cartId}")
 	public ResponseEntity<?> removeFromCart(@PathVariable Long cartId) {
-		String productName = cartService.findById(cartId).get().getCartitem().toString();
+		String productName = cartService.findById(cartId).get().getSelectedProduct().getName();
 		cartService.deleteFromCart(cartId);
 		return new ResponseEntity<>(new ResponseDto<>("success", productName + " removed from cart"), HttpStatus.OK);
 	}

@@ -1,6 +1,5 @@
 package com.app.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +13,6 @@ import com.app.dao.ProductRepository;
 import com.app.dao.StockRepository;
 import com.app.dao.UserRepository;
 import com.app.pojo.Cart;
-import com.app.pojo.CartItem;
 import com.app.pojo.Product;
 import com.app.pojo.Stock;
 import com.app.pojo.User;
@@ -38,10 +36,8 @@ public class CartServiceImpl implements CartService {
 		Stock stock = stockRepo.findById(productId).get();
 		if (stock.getQuantity() < quntity)
 			return "We Only Have" + stock.getQuantity() + " " + stock.getUnit() + "(s) of" + product.getName() + " .";
-		List<CartItem> cartItems = new ArrayList<CartItem>();
-		cartItems.add(new CartItem(quntity));
-		cartRepo.save(new Cart(quntity, cartItems, customer));
-		return quntity + product.getName() + " Added to cart";
+		cartRepo.save(new Cart(quntity, product, customer));
+		return quntity + product.getName() + " added to cart";
 	}
 
 	@Override
@@ -51,9 +47,13 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public String updateQuantity(Long cartId, Integer quantity) {
-//		CartItem cartItem = cartRepo.findById(cartId).get().getCartitem();
-
-		return null;
+		Cart cartItem = cartRepo.findById(cartId).get();
+		Long stockId = cartItem.getSelectedProduct().getId();
+		Stock stock = stockRepo.findById(stockId).get();
+		if (stock.getQuantity() < quantity)
+			return "We only have " + stock.getQuantity() + " " + stock.getUnit() + "(s) left!.";
+		cartItem.setQuantity(quantity);
+		return "success";
 	}
 
 	@Override
