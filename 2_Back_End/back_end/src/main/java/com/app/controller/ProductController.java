@@ -47,7 +47,7 @@ public class ProductController {
 	@Autowired
 	private CategoryService catService;
 
-	@PostMapping("/add-product")
+	@PostMapping("/add")
 	public ResponseEntity<?> addNewProduct(@RequestParam String productDto,
 			@RequestParam(required = false) MultipartFile image) {
 		String message = "";

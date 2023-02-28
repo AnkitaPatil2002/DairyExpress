@@ -43,6 +43,7 @@ public class AddressController {
 	@PostMapping("/add")
 	public ResponseEntity<?> addNewAddress(@RequestBody Address addr) throws UserNotFoundException {
 		Long UserID = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+		System.out.println(UserID + " Hell from address adding ");
 		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
 		addr.setSelectedUser(userService.findById(UserID));
 		return new ResponseEntity<>(new ResponseDto<Address>("success", addrService.AddOrEditAddress(addr)),

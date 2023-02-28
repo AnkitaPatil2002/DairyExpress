@@ -12,7 +12,7 @@ public class DairyExpress {
 	public static void main(String[] args) {
 		SpringApplication.run(DairyExpress.class, args);
 	}
-	
+
 	@Bean
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();

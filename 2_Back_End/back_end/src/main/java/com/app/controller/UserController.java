@@ -51,7 +51,7 @@ public class UserController {
 				HttpStatus.CREATED);
 	}
 
-	@PostMapping("/signin")
+	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest request) {
 		System.out.println("in auth " + request);
 		try {

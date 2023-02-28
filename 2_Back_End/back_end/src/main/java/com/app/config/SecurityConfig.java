@@ -17,8 +17,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.app.filter.JwtFilter;
 
-@EnableWebSecurity // mandatory
-@Configuration // mandatory
+@EnableWebSecurity
+@Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
@@ -31,19 +31,19 @@ public class SecurityConfig {
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
 		}).and().authorizeRequests()
 				.antMatchers("/user/**").permitAll()
+				.antMatchers("/product/**").permitAll()
 				.antMatchers("/address/**").permitAll()
 				.antMatchers("/cart/**").permitAll()
 				.antMatchers("/category/**").permitAll()
 				.antMatchers("/order/**").permitAll()
-				.antMatchers("/product/**")
-				.hasRole("CUSTOMER").antMatchers("/products/view", "/auth/**", "/swagger*/**", "/v*/api-docs/**")
-				.permitAll().antMatchers(HttpMethod.OPTIONS).permitAll().anyRequest().authenticated().and()
+				.antMatchers( "/swagger*/**", "/v*/api-docs/**").permitAll()
+				.antMatchers(HttpMethod.OPTIONS).permitAll()
+				.anyRequest().authenticated().and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}
 
-	// configure auth mgr bean : to be used in Authentication REST controller
 	@Bean
 	public AuthenticationManager authenticatonMgr(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
