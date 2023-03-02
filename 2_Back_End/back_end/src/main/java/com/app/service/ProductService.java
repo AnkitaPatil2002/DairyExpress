@@ -9,13 +9,13 @@ public interface ProductService {
 
 	String addProduct(ProductDto input);
 
-	List<Product> getProductsByCategory(Long id);
+	List<Product> getProductsByCategory(Integer id);
 
 	ProductDto editProduct(ProductDto input);
 
 	List<ProductDto> getStockReportByCategory(String category);
 
-	String deleteProduct(Long id);
+	String deleteProduct(Integer id);
 
-	ProductDto getProductDetail(Long id);
+	ProductDto getProductDetail(Integer id);
 }

@@ -77,7 +77,7 @@ public class UserController {
 	}
 
 	@PutMapping("/edit/{uid}")
-	public ResponseEntity<?> editUser(@RequestBody User user, @PathVariable long uid) {
+	public ResponseEntity<?> editUser(@RequestBody User user, @PathVariable int uid) {
 		user.setId(uid);
 		user.setPassword(encoder.encode(user.getPassword()));
 		return new ResponseEntity<>(new ResponseDto<User>("success", userService.registerOrEditUser(user)),
@@ -103,7 +103,7 @@ public class UserController {
 	}
 
 	@DeleteMapping("/delete/{uid}")
-	public ResponseEntity<?> deleteById(@PathVariable long uid) {
+	public ResponseEntity<?> deleteById(@PathVariable int uid) {
 		return new ResponseEntity<>(new ResponseDto<String>("Success", userService.deleteUserById(uid)), HttpStatus.OK);
 	}
 }

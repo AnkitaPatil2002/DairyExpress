@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.app.pojo.Product;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query("Select p from Product p join fetch p.selectedcategory where p.selectedcategory.id=:id")
-	List<Product> getProductByCategory(@Param("id") Long id);
+	List<Product> getProductByCategory(@Param("id") Integer id);
 }

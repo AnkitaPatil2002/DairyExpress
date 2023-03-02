@@ -18,7 +18,7 @@ public class AddressServiceImpl implements AddressService {
 	private AddressRepository addrRepo;
 
 	@Override
-	public List<Address> GetAllAddressessByUserId(Long userId) {
+	public List<Address> GetAllAddressessByUserId(Integer userId) {
 		return addrRepo.GetAllAddressesByUserId(userId);
 	}
 
@@ -28,7 +28,7 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public String DeleteAddressById(Long userId) {
+	public String DeleteAddressById(Integer userId) {
 		addrRepo.deleteById(userId);
 		return "Address of ID" + userId + "is deleted Successfully";
 	}

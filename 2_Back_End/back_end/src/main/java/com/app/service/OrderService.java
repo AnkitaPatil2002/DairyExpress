@@ -8,13 +8,13 @@ public interface OrderService {
 
 	List<OrderResponse> getAllOrders();
 
-	List<OrderResponse> getAllCustomerOrders(Long userId);
+	List<OrderResponse> getAllCustomerOrders(Integer userId);
 
-	void updateOrderStatus(Long orderId, String status);
+	void updateOrderStatus(Integer orderId, String status);
 
-	String placeOrderForUser(Long userId, Long addrId, String paymentMode);
+	String placeOrderForUser(Integer userId, Integer addrId, String paymentMode);
 
-	void assignEmployee(Long userId, Long orderId);
+	void assignEmployee(Integer userId, Integer orderId);
 
-	List<OrderResponse> getAllAssignedOrders(Long userId);
+	List<OrderResponse> getAllAssignedOrders(Integer userId);
 }

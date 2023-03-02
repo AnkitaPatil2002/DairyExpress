@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 import com.app.pojo.Address;
 
-public interface AddressRepository extends JpaRepository<Address,Long> {
+public interface AddressRepository extends JpaRepository<Address,Integer> {
 	
 	@Query("Select a from Address a join fetch a.selectedUser where a.selectedUser.id=:id")
-	List<Address>GetAllAddressesByUserId(@Param("id")Long userId);
+	List<Address>GetAllAddressesByUserId(@Param("id")Integer userId);
 }

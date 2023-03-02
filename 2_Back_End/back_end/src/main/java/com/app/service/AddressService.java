@@ -6,9 +6,9 @@ import com.app.pojo.Address;
 
 public interface AddressService {
 
-	List<Address> GetAllAddressessByUserId(Long userId);
+	List<Address> GetAllAddressessByUserId(Integer userId);
 
 	Address AddOrEditAddress(Address addr);
 
-	String DeleteAddressById(Long userId);
+	String DeleteAddressById(Integer userId);
 }

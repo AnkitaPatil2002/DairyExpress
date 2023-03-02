@@ -53,7 +53,7 @@ public class OrderServiceImpl implements OrderService {
 	private PaymentRepository payRepo;
 
 	@Override
-	public String placeOrderForUser(Long userId, Long addrId, String paymentMode) {
+	public String placeOrderForUser(Integer userId, Integer addrId, String paymentMode) {
 		// get all cart items for given user
 		List<Cart> cartItems = cartRepo.findAllItemsByUser(userId);
 		double total = 0.0;
@@ -101,7 +101,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrderResponse> getAllCustomerOrders(Long userId) {
+	public List<OrderResponse> getAllCustomerOrders(Integer userId) {
 		List<Order> orders = orderRepo.findAllOrdersByUserId(userId);
 
 		List<OrderResponse> response = new ArrayList<>();
@@ -115,7 +115,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void assignEmployee(Long userId, Long orderId) {
+	public void assignEmployee(Integer userId, Integer orderId) {
 		Order order = orderRepo.findById(orderId).get();
 		User employee = userRepo.findById(userId).get();
 		order.setEmployee(employee);
@@ -128,7 +128,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrderResponse> getAllAssignedOrders(Long userId) {
+	public List<OrderResponse> getAllAssignedOrders(Integer userId) {
 		List<Order> orders = orderRepo.findAllOrdersByEmployeeId(userId);
 
 		List<OrderResponse> response = new ArrayList<>();
@@ -142,7 +142,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void updateOrderStatus(Long orderId, String status) {
+	public void updateOrderStatus(Integer orderId, String status) {
 		Order order = orderRepo.findById(orderId).get();
 		order.setOrderStatus(OrderStatus.valueOf(status));
 		order.setStatusUdpateTime(LocalDateTime.now());

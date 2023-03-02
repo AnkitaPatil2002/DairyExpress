@@ -49,11 +49,11 @@ public class ProductServiceImpl implements ProductService {
 		// link the product with the stock pojo
 		stock.setCurrentProduct(product);
 		stockRepo.save(stock);
-		return product.getName() + "Added Successfully";
+		return product.getName() + " Added Successfully";
 	}
 
 	@Override
-	public List<Product> getProductsByCategory(Long id) {
+	public List<Product> getProductsByCategory(Integer id) {
 		return productRepo.getProductByCategory(id);
 	}
 
@@ -83,7 +83,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public String deleteProduct(Long id) {
+	public String deleteProduct(Integer id) {
 		String productName = productRepo.findById(id).get().getName();
 		stockRepo.deleteById(id);
 		productRepo.deleteById(id);
@@ -91,10 +91,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductDto getProductDetail(Long id) {
+	public ProductDto getProductDetail(Integer id) {
 		Stock stock = stockRepo.findById(id).get();
 		return new ProductDto(stock.getCurrentProduct(), stock.getCurrentProduct().getSelectedcategory().getName(),
 				stock);
 	}
-
 }

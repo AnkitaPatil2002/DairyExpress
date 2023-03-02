@@ -35,14 +35,14 @@ public class AddressController {
 
 	@GetMapping("/all")
 	public ResponseEntity<?> getAllAddresses() {
-		Long UserID = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+		Integer UserID = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		return new ResponseEntity<>(
 				new ResponseDto<List<Address>>("success", addrService.GetAllAddressessByUserId(UserID)), HttpStatus.OK);
 	}
 
 	@PostMapping("/add")
 	public ResponseEntity<?> addNewAddress(@RequestBody Address addr) throws UserNotFoundException {
-		Long UserID = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+		Integer UserID = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		System.out.println(UserID + " Hell from address adding ");
 		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
 		addr.setSelectedUser(userService.findById(UserID));
@@ -51,9 +51,9 @@ public class AddressController {
 	}
 
 	@PutMapping("/edit/{addrId}")
-	public ResponseEntity<?> editAddressById(@RequestBody Address addr, @PathVariable Long addrId)
+	public ResponseEntity<?> editAddressById(@RequestBody Address addr, @PathVariable Integer addrId)
 			throws UserNotFoundException {
-		Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+		Integer userId = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		addr.setSelectedUser(userService.findById(userId));
 		addr.setId(addrId);
 		return new ResponseEntity<>(new ResponseDto<Address>("success", addrService.AddOrEditAddress(addr)),
@@ -61,7 +61,7 @@ public class AddressController {
 	}
 
 	@DeleteMapping("/delete/{addrId}")
-	public ResponseEntity<?> deleteAddressById(@PathVariable Long addrId) {
+	public ResponseEntity<?> deleteAddressById(@PathVariable Integer addrId) {
 		return new ResponseEntity<>(new ResponseDto<String>("success", addrService.DeleteAddressById(addrId)),
 				HttpStatus.OK);
 	}

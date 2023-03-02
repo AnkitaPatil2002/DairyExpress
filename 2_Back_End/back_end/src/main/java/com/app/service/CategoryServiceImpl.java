@@ -30,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public String deleteCategoryById(Long id) {
+	public String deleteCategoryById(Integer id) {
 		Category categoryToDelete = categorRepo.findById(id).get();
 		String catName = categoryToDelete.getName();
 		categoryToDelete.getProducts().forEach(product -> {

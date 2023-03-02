@@ -30,7 +30,7 @@ public class CartServiceImpl implements CartService {
 	private StockRepository stockRepo;
 
 	@Override
-	public String addItemToCart(Long productId, Integer quntity, Long userId) {
+	public String addItemToCart(Integer productId, Integer quntity, Integer userId) {
 		User customer = userRepo.findById(userId).get();
 		Product product = prodRepo.findById(productId).get();
 		Stock stock = stockRepo.findById(productId).get();
@@ -41,14 +41,14 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<Cart> getAllCartContents(Long userID) {
+	public List<Cart> getAllCartContents(Integer userID) {
 		return cartRepo.findAllItemsByUser(userID);
 	}
 
 	@Override
-	public String updateQuantity(Long cartId, Integer quantity) {
+	public String updateQuantity(Integer cartId, Integer quantity) {
 		Cart cartItem = cartRepo.findById(cartId).get();
-		Long stockId = cartItem.getSelectedProduct().getId();
+		Integer stockId = cartItem.getSelectedProduct().getId();
 		Stock stock = stockRepo.findById(stockId).get();
 		if (stock.getQuantity() < quantity)
 			return "We only have " + stock.getQuantity() + " " + stock.getUnit() + "(s) left!.";
@@ -57,17 +57,17 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public void deleteFromCart(Long cartId) {
+	public void deleteFromCart(Integer cartId) {
 		cartRepo.deleteById(cartId);
 	}
 
 	@Override
-	public void deleteAllFromCart(Long userID) {
+	public void deleteAllFromCart(Integer userID) {
 		cartRepo.deleteAll(cartRepo.findAllItemsByUser(userID));
 	}
 
 	@Override
-	public Optional<Cart> findById(Long cartId) {
+	public Optional<Cart> findById(Integer cartId) {
 		return cartRepo.findById(cartId);
 	}
 }

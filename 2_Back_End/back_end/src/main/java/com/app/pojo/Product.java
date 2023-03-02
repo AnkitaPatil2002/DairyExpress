@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "products")
+@JsonIgnoreProperties("id")
 public class Product extends BaseEntity {
 	@Column(length = 30)
 	private String name;

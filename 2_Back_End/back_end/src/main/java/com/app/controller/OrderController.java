@@ -28,8 +28,8 @@ public class OrderController {
 
 	@PostMapping("/place")
 	public ResponseEntity<?> placeOrderFromCart(@RequestBody OrderPlaceDto orderInput) {
-		Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-		Long addrId = orderInput.getAddressId();
+		Integer userId = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
+		Integer addrId = orderInput.getAddressId();
 		String paymentMode = orderInput.getPaymentMode();
 		return new ResponseEntity<>(
 				new ResponseDto<>("success", orderService.placeOrderForUser(userId, addrId, paymentMode)),
@@ -43,28 +43,28 @@ public class OrderController {
 
 	@GetMapping("/assigned")
 	public ResponseEntity<?> getAssignedOrders() {
-		Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+		Integer userId = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		return new ResponseEntity<>(new ResponseDto<>("success", orderService.getAllAssignedOrders(userId)),
 				HttpStatus.OK);
 	}
 
 	@GetMapping("/customer/all")
 	public ResponseEntity<?> getAllCustomerOrders() {
-		Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+		Integer userId = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		return new ResponseEntity<>(new ResponseDto<>("success", orderService.getAllCustomerOrders(userId)),
 				HttpStatus.OK);
 	}
 
 	@PatchMapping("/update")
-	public ResponseEntity<?> assignEmployee(@RequestBody HashMap<String, Long> orderInput) {
-		Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+	public ResponseEntity<?> assignEmployee(@RequestBody HashMap<String, Integer> orderInput) {
+		Integer userId = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
 		orderService.assignEmployee(userId, orderInput.get("orderId"));
 		return new ResponseEntity<>(new ResponseDto<>("success", "Order Assigned Successfully!!"), HttpStatus.OK);
 	}
 
 	@PatchMapping("/update-status")
 	public ResponseEntity<?> updateOrderStatus(@RequestBody HashMap<String, String> orderInput) {
-		orderService.updateOrderStatus(Long.parseLong(orderInput.get("orderId")), orderInput.get("status"));
+		orderService.updateOrderStatus(Integer.parseInt(orderInput.get("orderId")), orderInput.get("status"));
 		return new ResponseEntity<>(new ResponseDto<>("success", "Order Status Changed Successfully!!"), HttpStatus.OK);
 	}
 }

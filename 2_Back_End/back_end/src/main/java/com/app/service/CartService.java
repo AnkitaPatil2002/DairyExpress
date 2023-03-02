@@ -7,15 +7,15 @@ import com.app.pojo.Cart;
 
 public interface CartService {
 
-	String addItemToCart(Long productId, Integer quntity, Long userId);
+	String addItemToCart(Integer productId, Integer quntity, Integer userId);
 
-	List<Cart> getAllCartContents(Long userID);
+	List<Cart> getAllCartContents(Integer userID);
 
-	void deleteFromCart(Long cartId);
+	void deleteFromCart(Integer cartId);
 
-	void deleteAllFromCart(Long userID);
+	void deleteAllFromCart(Integer userID);
 
-	Optional<Cart> findById(Long cartId);
+	Optional<Cart> findById(Integer cartId);
 
-	String updateQuantity(Long cartId, Integer quantity);
+	String updateQuantity(Integer cartId, Integer quantity);
 }

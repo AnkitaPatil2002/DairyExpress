@@ -51,9 +51,9 @@ public class ProductController {
 	public ResponseEntity<?> addNewProduct(@RequestParam String productDto,
 			@RequestParam(required = false) MultipartFile image) {
 		String message = "";
+		System.out.println(image);
 		try {
 			ProductDto productDetails = new ObjectMapper().readValue(productDto, ProductDto.class);
-
 			if (image != null) {
 				image.transferTo(new File(location, image.getOriginalFilename()));
 				productDetails.getProduct().setImageName(image.getOriginalFilename());
@@ -96,7 +96,7 @@ public class ProductController {
 
 	// show all product details with stock
 	@GetMapping("/detail/{pid}")
-	public ResponseEntity<?> getProductDetail(@PathVariable Long pid) {
+	public ResponseEntity<?> getProductDetail(@PathVariable Integer pid) {
 		ProductDto productDetail = prodService.getProductDetail(pid);
 		return new ResponseEntity<>(new ResponseDto<>("success", productDetail), HttpStatus.OK);
 	}
@@ -125,7 +125,7 @@ public class ProductController {
 
 	// delete product
 	@DeleteMapping("/delete/{pid}")
-	public ResponseEntity<?> deleteProduct(@PathVariable Long pid) {
+	public ResponseEntity<?> deleteProduct(@PathVariable Integer pid) {
 		return new ResponseEntity<>(new ResponseDto<String>("success", prodService.deleteProduct(pid)), HttpStatus.OK);
 	}
 }

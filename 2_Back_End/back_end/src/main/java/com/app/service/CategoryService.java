@@ -10,7 +10,7 @@ public interface CategoryService {
 
 	List<Category> getAllCategories();
 
-	String deleteCategoryById(Long id);
+	String deleteCategoryById(Integer id);
 
 	Category findByName(String categoryName);
 }

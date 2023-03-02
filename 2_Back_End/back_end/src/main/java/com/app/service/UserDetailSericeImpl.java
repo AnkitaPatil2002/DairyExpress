@@ -24,7 +24,7 @@ public class UserDetailSericeImpl implements UserDetailsService {
 		return new UserDetailmpl(user);
 	}
 
-	public UserDetails loadUserById(Long id) throws UsernameNotFoundException {
+	public UserDetails loadUserById(Integer id) throws UsernameNotFoundException {
 
 		System.out.println("\n------------ IN UserDetailsServiceImpl.loadUserById ---------------\n");
 

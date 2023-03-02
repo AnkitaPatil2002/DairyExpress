@@ -14,9 +14,9 @@ public interface UserService {
 
 	User findByEmail(String email);
 
-	User findById(Long userId) throws UserNotFoundException;
+	User findById(Integer userId) throws UserNotFoundException;
 
 	List<User> getUsersByRole(String role);
 
-	String deleteUserById(Long Id);
+	String deleteUserById(Integer Id);
 }

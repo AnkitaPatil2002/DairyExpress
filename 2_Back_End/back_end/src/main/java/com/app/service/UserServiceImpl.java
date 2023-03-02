@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findById(Long userId) throws UserNotFoundException {
+	public User findById(Integer userId) throws UserNotFoundException {
 		return userRepo.findById(userId).orElseThrow(() -> new UserNotFoundException("Invalid Credintials"));
 	}
 
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String deleteUserById(Long Id) {
+	public String deleteUserById(Integer Id) {
 		userRepo.deleteById(Id);
 		if (userRepo.findById(Id) == null) {
 			return "User Deleted Success fully";
