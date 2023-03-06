@@ -41,3 +41,5 @@
 - View customer location for delivery
 - In-app call and chat with customer
 - View order history
+
+	DairyExpress Platform can be the greatest blessing for the customer's everyday morning needs of dairy products. With this platform, customer can register and order their daily requirements for dairy products and receives assured delivery at the desired time every day at their doorstep. this platform provides convenient and hassle-free service which is taken care of by us.
