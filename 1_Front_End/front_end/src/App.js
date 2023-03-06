@@ -30,7 +30,6 @@ import ViewAllOrdersScreen from "./Screens/Common/ViewAllOrdersScreen";
 import ViewAssignedOrdersScreen from "./Screens/Common/ViewAssignedOrdersScreen";
 import DeliveryPickedOrderScreen from "./Screens/Delivery/DeliveryPickedOrderScreen";
 import AboutUsScreen from "./Screens/Home/AboutUsScreen";
-import Contact from "./Screens/Home/Contact";
 
 
 
@@ -49,7 +48,6 @@ function App() {
             <Route path="/signup" component={SignUpScreen} />
             <Route path="/contact" component={ContactUsScreen} />
             <Route path="/about" component={AboutUsScreen} />
-            <Route path="/contact2" component={Contact} />
 
             <Route path="/edit-profile" component={EditProfileScreen} />
             

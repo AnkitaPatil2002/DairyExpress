@@ -4,7 +4,7 @@ import Header from '../../Components/Header'
 const AboutUsScreen = (props) => {
   return (
     <div className="Screen">
-      <Header title="About Us" />
+      <Header title="About Us"/>
       <div className="info">
         <div className="row">
           <div className="col-md-6 col-sm-12 col-xs-12" Style="padding : 25px">
@@ -20,18 +20,25 @@ const AboutUsScreen = (props) => {
           <div className="col-md-6 col-sm-12 col-xs-12" Style="padding : 25px">
             <h5 className="text-center">Serving At</h5>
             <ul>
-              <table Style="width: 100%">
+            <table Style="width: 100%">
                 <tr>
                   <td><li></li></td>
-                  <td>Buldhana</td>
-                  <td>Jaystambh  chowk</td>
+                  <td>Sangli</td>
+                  <td> Shivaji nagar, College Corner </td>
+                  <td className="text-center"> 10:00 to 19:00 Hrs</td>
+                </tr>
+
+                <tr>
+                  <td><li></li></td>
+                  <td>Kolhapur</td>
+                  <td>Rankala Tower, Kolhapur</td>
                   <td className="text-center"> 09:00 to 23:00 Hrs</td>
                 </tr>
 
                 <tr>
                   <td><li></li></td>
-                  <td>Amravati</td>
-                  <td> Chintamani nagar,Amravati</td>
+                  <td>Pune</td>
+                  <td> Gokhale chowk, Magarpatta </td>
                   <td className="text-center"> 09:00 to 22:00 Hrs</td>
                 </tr>
               </table>
@@ -40,11 +47,11 @@ const AboutUsScreen = (props) => {
           <div className="col-md-6 col-sm-12 col-xs-12" Style="padding : 25px">
             <h5 className="text-center">Values</h5>
             <ul>
-              <li>To listen to the customers,the employees,to provide products,information</li> and
+              <li>To listen to the customers,the employees,to provide products,information</li> and 
               <li>to be responsible through commitment, and respect.</li>
             </ul>
           </div>
-          <hr />
+          <hr/>
           {/* <div className="col-md-12 col-sm-12 col-xs-12" Style="padding : 25px">
             <h5 className="text-center">Ease of Shopping</h5>
             <p>

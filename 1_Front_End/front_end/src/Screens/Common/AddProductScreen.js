@@ -11,7 +11,7 @@ const AddProductScreen = (props) => {
     const userSignIn = useSelector(store =>store.userSignIn)
 
     const url_category = URL_PATH+"/category/all"
-    const url_product_add = URL_PATH+"/product/add"
+    const url_product_add = URL_PATH+"/product/add-product"
 
     const header = {
         headers: {

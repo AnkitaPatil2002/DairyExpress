@@ -17,13 +17,13 @@ const ContactUsScreen = (props) => {
                         <div className="row" Style="padding: 5px;">
                             <div className="col-md-4 col-sm-12 col-xs-12 Block" Style="padding: 15px;">
                                 <strong className="fs-5">Mahendra Kolhe</strong><br />
-                                <label className="fs-7">Store Admin</label><br />
+                                <label className="fs-7">Store Manager</label><br />
                                 <label className="fs-7">mkolhe23@gmail.com</label>
                             </div>
                             <div className="col-md-4 col-sm-12 col-xs-12 Block" Style="padding: 15px;">
                                 <strong className="fs-7">Dairy-Express, Jay Hind Complex</strong><br />
-                                <label className="fs-7">Jaystambh  chowk</label><br />
-                                <label className="fs-7">Buldhana - 443103</label><br />
+                                <label className="fs-7">Ranakala  Tower</label><br />
+                                <label className="fs-7">Kolhapur - 416012</label><br />
                                 <label className="fs-7">Maharashtra | India</label>
 
                             </div>
@@ -34,16 +34,17 @@ const ContactUsScreen = (props) => {
                                 <label className="fs-7"> 1800-9090-5544 </label>
                             </div>
                         </div>
+                        <hr />
                         <div className="row" Style="padding: 5px;">
                             <div className="col-md-4 col-sm-12 col-xs-12 Block" Style="padding: 15px;">
                                 <strong className="fs-5">Sujay Mathane</strong><br />
-                                <label className="fs-7">Store Admin</label><br />
-                                <label className="fs-7">smathane@gmail.com</label>
+                                <label className="fs-7">Store Manager</label><br />
+                                <label className="fs-7">sujay@gmail.com</label>
                             </div>
                             <div className="col-md-4 col-sm-12 col-xs-12 Block" Style="padding: 15px;">
                                 <strong className="fs-7">Dairy-Express,Gandharva Plaza</strong><br />
                                 <label className="fs-7">Chintamani nagar</label><br />
-                                <label className="fs-7">Amravati - 416416</label><br />
+                                <label className="fs-7">Sangli - 416416</label><br />
                                 <label className="fs-7">Maharashtra | India</label>
 
                             </div>
@@ -54,8 +55,6 @@ const ContactUsScreen = (props) => {
                                 <label className="fs-7"> 1800-9090-5544 </label>
                             </div>
                         </div>
-                        <hr />
-                        <hr />
                     </div>
                 </div>
 

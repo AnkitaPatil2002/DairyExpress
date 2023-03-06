@@ -65,8 +65,6 @@ export const signin = (email, password) => {
     axios
       .post(url, body, header)
       .then((response) => {
-        let token=response.data.token;
-        sessionStorage.setItem('Authorization',token);
         dispatch({
           type: USER_SIGNIN_SUCCESS,
           payload: response.data,

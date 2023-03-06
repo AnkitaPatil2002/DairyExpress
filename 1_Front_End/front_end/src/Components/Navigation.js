@@ -38,6 +38,7 @@ const Navigation = (props) => {
             aria-expanded="false"aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
+
           {
             userSignIn.response && userSignIn.response.data.role === "ADMIN" && (
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -223,9 +224,6 @@ const Navigation = (props) => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/contact">Contact</Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to="/contact2">Contact2</Link>
-                </li> */}
               </ul>
               <div className="d-flex">
                 <Link to="/signin" className="btn btn-outline-info" type="button">Login</Link>
