@@ -90,7 +90,7 @@ const AddProductScreen = (props) => {
                     <div className="col-md-4 Block">                    
                         <div className="mb-3 productHolder text-center">
                             <span className="vertical-aligner"></span>
-                            <img src={imageFile} className="img-thumbnail img-responsive img-fluid" alt="imgae"/>
+                            <img src={imageFile} className="img-thumbnail img-responsive img-fluid" alt={image}/>
                         </div>
                         
                         <div className="mb-3">

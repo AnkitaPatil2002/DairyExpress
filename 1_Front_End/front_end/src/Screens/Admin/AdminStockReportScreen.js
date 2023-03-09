@@ -80,7 +80,7 @@ const AdminStockReportScreen = (props) => {
                         <table className="table table-hover table-bordered">
                             <thead className="table-dark">
                                 <tr>
-                                    <th className="text-center">Product ID</th>
+                                    {/* <th className="text-center">Product ID</th> */}
                                     <th>Product Name</th>
                                     <th className="text-center">Product Stock</th>
                                     {/* <th className="text-center">Units</th> */}
@@ -92,7 +92,7 @@ const AdminStockReportScreen = (props) => {
                                 productDetails.map(detail =>{
                                     return (
                                         <tr>
-                                            <td className="text-center">{detail.product.id}</td>
+                                            {/* <td className="text-center">{detail.product.id}</td> */}
                                             <td>{detail.product.name}</td>
                                             <td className="text-center">{detail.stock.quantity}</td>
                                             {/* <td className="text-center">{detail.stock.unit}</td> */}

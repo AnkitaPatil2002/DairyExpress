@@ -22,8 +22,8 @@ const ContactUsScreen = (props) => {
                             </div>
                             <div className="col-md-4 col-sm-12 col-xs-12 Block" Style="padding: 15px;">
                                 <strong className="fs-7">Dairy-Express, Jay Hind Complex</strong><br />
-                                <label className="fs-7">Ranakala  Tower</label><br />
-                                <label className="fs-7">Kolhapur - 416012</label><br />
+                                <label className="fs-7">Jaystambh  Chowk</label><br />
+                                <label className="fs-7">Buldhana - 443103</label><br />
                                 <label className="fs-7">Maharashtra | India</label>
 
                             </div>
@@ -44,7 +44,7 @@ const ContactUsScreen = (props) => {
                             <div className="col-md-4 col-sm-12 col-xs-12 Block" Style="padding: 15px;">
                                 <strong className="fs-7">Dairy-Express,Gandharva Plaza</strong><br />
                                 <label className="fs-7">Chintamani nagar</label><br />
-                                <label className="fs-7">Sangli - 416416</label><br />
+                                <label className="fs-7">Amravati - 416416</label><br />
                                 <label className="fs-7">Maharashtra | India</label>
 
                             </div>
