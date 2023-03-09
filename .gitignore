@@ -4,7 +4,6 @@ node_modules/
 .metadata/
 bin/
 .settings/
-public/
 .classpath/
 .project/
 .vscode/
@@ -12,7 +11,7 @@ Servers/
 Other/
 .mvn
 
-1_Front_End/.DS_Store
+
 2_Back_End/.DS_Store
 2_Back_End/back_end/.DS_Store
 2_Back_End/back_end/src/.DS_Store
