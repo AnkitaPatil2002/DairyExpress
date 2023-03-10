@@ -63,7 +63,6 @@ public class UserController {
 			Authentication authenticate = authenticationManager
 					.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 			System.out.println("\n------ Authenticated userDetails:" + authenticate + " -------\n");
-
 		} catch (Exception e) {
 			throw new UserNotFoundException("Invalid username or password");
 		}

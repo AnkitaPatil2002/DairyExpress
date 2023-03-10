@@ -16,7 +16,6 @@ const ViewProductsScreen = (props) => {
     const url_stock = URL_PATH+"/product/stock/category-report"
     const url_delete = URL_PATH+"/product/delete"
     //const url_image = URL_PATH+"/product/image"
-    //const url_image = "E:\\Project\\Final Project\\Car-Cafe-Frontend-React\\src\\Images"
     const header = {
         headers: {
             "Content-Type" : "application/json",

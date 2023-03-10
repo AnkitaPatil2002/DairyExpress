@@ -41,10 +41,6 @@ public class ProductController {
 	@Value("${file.upload.location}")
 	private String location;
 
-//	public ProductController() throws IOException {
-//		location = new ClassPathResource("static/images").getFile().getAbsolutePath(); 
-//	}
-
 	@Autowired
 	private IProductService prodService;
 

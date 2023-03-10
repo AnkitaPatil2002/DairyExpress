@@ -13,7 +13,9 @@ public class OrderDetail extends BaseEntity {
 	private double price;
 	private int quantity;
 
-	@ManyToOne
+	//one order can have many product and one product can belong from many order
+	//order<-->product(many to many)  -----> third table order details
+	@ManyToOne 
 	@JoinColumn(name = "order_id", nullable = false)
 	private Order currentOrder;
 
