@@ -19,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private UserRepository userRepo;
 	
 	public UserDetailsServiceImpl() {
-		System.out.println("\n---------- CTOR: "+ getClass().getName() +" -----------\n");
+		System.out.println("\n2.---------- CTOR: "+ getClass().getName() +" -----------\n");
 	}
 
 	@Override

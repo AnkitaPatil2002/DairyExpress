@@ -22,10 +22,10 @@ import com.app.service.UserDetailsServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private JwtFilter JwtFilter;
-
-	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
+	
+	@Autowired
+	private JwtFilter JwtFilter;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		System.out.println("\n---SECURITY CONFIG2 - configure 2 ---\n");
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
 		}).and().authorizeRequests().antMatchers("/user/**").permitAll().antMatchers("/product/**").permitAll()

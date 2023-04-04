@@ -31,8 +31,6 @@ import com.app.util.JwtUtil;
 @RequestMapping("/user")
 @CrossOrigin
 public class UserController {
-	@Autowired
-	private JwtUtil jwtUtil;
 
 	@Autowired
 	private PasswordEncoder encoder;
@@ -42,9 +40,11 @@ public class UserController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private JwtUtil jwtUtil;
 
 	public UserController() {
-		System.out.println("---- CTOR: " + getClass().getName() + " --------");
+		System.out.println("3.---- CTOR: " + getClass().getName() + " --------");
 	}
 
 	@PostMapping("/register")
@@ -57,12 +57,12 @@ public class UserController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest request) {
-		System.out.println("in authenticate user" + request);
+		System.out.println("4.in authenticate user " + request);
 		try {
 			// authenticating the user
 			Authentication authenticate = authenticationManager
 					.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-			System.out.println("\n------ Authenticated userDetails:" + authenticate + " -------\n");
+			System.out.println("\n------ Authenticated userDetails: " + authenticate + " -------\n");
 		} catch (Exception e) {
 			throw new UserNotFoundException("Invalid username or password");
 		}

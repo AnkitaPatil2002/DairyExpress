@@ -22,7 +22,7 @@ import com.app.util.JwtUtil;
 public class JwtFilter extends OncePerRequestFilter {
 
 	public JwtFilter() {
-		System.out.println("\n--------CTOR: JWT FILTER -----------\n");
+		System.out.println("\n1.--------CTOR: JWT FILTER -----------\n");
 	}
 
 	@Autowired
@@ -38,6 +38,7 @@ public class JwtFilter extends OncePerRequestFilter {
 		String authHeader = request.getHeader("Authorization");
 		String token = null;
 		Integer id = null;
+		System.out.println("auth header " + authHeader + " token " + token + " id " + id);
 		if (authHeader != null && authHeader.startsWith("Bearer ")) {
 			token = authHeader.substring(7); // skip "Bearer "
 			id = jwtUtil.extractIdFromToken(token);
